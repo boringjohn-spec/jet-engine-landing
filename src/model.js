@@ -46,7 +46,12 @@ function classify(center, size, isBody) {
   return 'raceway';
 }
 
+// The FBX still references the original 4K PNG textures. We replace its material
+// with our compressed WebP set, so answer those requests with a blank pixel.
+const BLANK_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
+
 export async function loadRocket(manager) {
+  manager.setURLModifier((url) => (/\.png$/i.test(url) ? BLANK_PNG : url));
   const fbx = await new FBXLoader(manager).loadAsync('/models/engine.fbx');
   let src;
   fbx.traverse((o) => { if (o.isMesh && !src) src = o; });
