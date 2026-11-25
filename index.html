@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kiln Propulsion · Ember K1 hybrid propulsion stack</title>
+  <meta name="description" content="Ember K1 is a flight-ready hybrid propulsion stack: motor, avionics and aero surfaces delivered as one integrated unit. Throttle it, shut it down, refuel it, fly it again." />
+  <meta name="theme-color" content="#0e0f10" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <canvas class="companion" data-companion aria-hidden="true"></canvas>
+
+  <div class="loader" data-loader aria-live="polite">
+    <div class="loader__inner">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <p class="mono">Loading flight hardware <span data-loader-pct>000</span>%</p>
+    </div>
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Kiln Propulsion, back to top">
+      <span class="brand__mark" aria-hidden="true"></span>KILN<span class="brand__sub">/Propulsion</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#hardware">Hardware</a>
+      <a href="#burn">Burn</a>
+      <a href="#specs">Specs</a>
+      <a href="#log">Test log</a>
+    </nav>
+    <a class="btn btn--bracket" href="#contact"><span class="long">Talk to an engineer</span><span class="short">Contact</span></a>
+  </header>
+
+  <main id="main">
+    <!-- 1 · Hero + exploded view share one pinned 3D stage -->
+    <section class="stage" id="top" aria-label="Ember K1">
+      <span class="stage__anchor" id="hardware" aria-hidden="true"></span>
+      <div class="stage__sticky">
+        <canvas class="stage__canvas" data-stage-canvas aria-hidden="true"></canvas>
+        <svg class="stage__leaders" data-leaders aria-hidden="true"></svg>
+
+        <div class="hero" data-hero>
+          <p class="eyebrow"><span class="pip" aria-hidden="true"></span>Ember K1 · Hybrid propulsion stack</p>
+          <h1 class="hero__title" data-split><span class="l">Thrust,</span> <span class="l">on command.</span></h1>
+          <p class="hero__lede">A flight-ready hybrid motor, avionics and aero surfaces, delivered as one integrated stack. Throttle it, shut it down, refuel it, fly it again.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--amber" href="#contact">Request the data sheet <span aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#hardware">See inside <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <div class="hero__aside" data-hero-aside>
+          <dl class="hero__specs">
+            <div><dt>Average thrust</dt><dd>24<span>kN</span></dd></div>
+            <div><dt>Throttle range</dt><dd>40–100<span>%</span></dd></div>
+            <div><dt>Flights per case</dt><dd>12</dd></div>
+          </dl>
+          <p class="hero__meta mono"><span class="pip pip--live" aria-hidden="true"></span>SN-014 · In qualification</p>
+          <p class="hero__scroll mono" aria-hidden="true">Scroll to take it apart</p>
+        </div>
+
+        <div class="xv" data-xv>
+          <p class="eyebrow">Exploded view · 12 modules</p>
+          <h2 class="xv__title">Twelve modules.<br />One stack.</h2>
+          <p class="xv__lede">Designed, machined and hot-fired under one roof. Any module swaps out on the pad, with no trip back to the factory.</p>
+        </div>
+
+        <ol class="xv__labels xv__labels--right" data-side="right" aria-label="Aft modules" start="7">
+          <li data-mod="tank"><span class="code">07</span><span class="name">N₂O oxidizer tank</span><span class="detail">Filament-wound carbon, 62 bar</span></li>
+          <li data-mod="raceway"><span class="code">08</span><span class="name">Umbilical raceway</span><span class="detail">Power and data to the pad</span></li>
+          <li data-mod="injector"><span class="code">09</span><span class="name">Injector head</span><span class="detail">64 elements, printed Inconel 718</span></li>
+          <li data-mod="chamber"><span class="code">10</span><span class="name">Fuel grain &amp; chamber</span><span class="detail">Paraffin-HTPB, inert until lit</span></li>
+          <li data-mod="fins"><span class="code">11</span><span class="name">Fin can</span><span class="detail">4 × clipped delta, swappable</span></li>
+          <li data-mod="nozzle"><span class="code">12</span><span class="name">Ablative nozzle</span><span class="detail">Silica-phenolic, expansion ratio 8</span></li>
+        </ol>
+        <ol class="xv__labels xv__labels--left" data-side="left" aria-label="Forward modules">
+          <li data-mod="probe"><span class="code">01</span><span class="name">Air-data probe</span><span class="detail">Pitot-static, sampled at 1 kHz</span></li>
+          <li data-mod="fairing"><span class="code">02</span><span class="name">Ogive fairing</span><span class="detail">Carbon/epoxy, 3:1 ogive</span></li>
+          <li data-mod="payload"><span class="code">03</span><span class="name">Payload adapter</span><span class="detail">Ø300 mm, 12-bolt interface</span></li>
+          <li data-mod="avionics"><span class="code">04</span><span class="name">Flight computer</span><span class="detail">Triple-redundant, 1 kHz telemetry</span></li>
+          <li data-mod="canards"><span class="code">05</span><span class="name">Roll-control canards</span><span class="detail">Electromechanical, ±15°</span></li>
+          <li data-mod="vent"><span class="code">06</span><span class="name">Vent &amp; fill valve</span><span class="detail">Pad-side N₂O fill and relief</span></li>
+        </ol>
+
+        <div class="xv__focus" data-focus aria-hidden="true">
+          <p class="mono"><span class="code" data-focus-code>01</span> <span data-focus-name>Air-data probe</span></p>
+          <p class="detail" data-focus-detail>Pitot-static, sampled at 1 kHz</p>
+        </div>
+
+        <div class="xv__status mono" aria-hidden="true">
+          <span>Disassembly</span>
+          <span class="ticks" data-status-ticks><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          <span data-status-pct>000%</span>
+        </div>
+
+        <div class="reassembled" data-reassembled>
+          <p class="eyebrow">Reassembled · pad-ready</p>
+          <p class="reassembled__title">Back on the pad in 54&nbsp;minutes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · Proof in numbers -->
+    <section class="metrics" aria-labelledby="metrics-title">
+      <div class="wrap">
+        <p class="eyebrow" id="metrics-title" data-reveal>Measured on our test stand, not on a slide</p>
+        <div class="metrics__grid" data-reveal>
+          <div class="metric">
+            <p class="metric__value"><span data-count="432">432</span><span class="unit">kN·s</span></p>
+            <p class="metric__label">Total impulse per burn</p>
+          </div>
+          <div class="metric">
+            <p class="metric__value"><span data-count="238">238</span><span class="unit">s</span></p>
+            <p class="metric__label">Specific impulse, vacuum</p>
+          </div>
+          <div class="metric">
+            <p class="metric__value"><span data-count="0">0</span><span class="unit">kg</span></p>
+            <p class="metric__label">Explosive material on the pad. Fuel and oxidizer never meet until ignition.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · Particle field: model → fire → flight -->
+    <section class="burn" id="burn" aria-labelledby="burn-title">
+      <div class="burn__sticky">
+        <canvas class="burn__canvas" data-burn-canvas aria-hidden="true"></canvas>
+        <div class="burn__copy">
+          <p class="eyebrow">From model to flame</p>
+          <h2 class="burn__title" id="burn-title"><span data-word>Modelled.</span> <span data-word>Fired.</span> <span data-word>Flown.</span></h2>
+          <ol class="burn__steps">
+            <li data-step><span class="mono">01 / Modelled</span><p>Every Ember is simulated down to the bolt before metal is cut: 1.4 million mesh cells per burn.</p></li>
+            <li data-step><span class="mono">02 / Fired</span><p>64 injector elements spray nitrous oxide across the fuel grain for an even, stable burn.</p></li>
+            <li data-step><span class="mono">03 / Flown</span><p>Shock diamonds, 1 kHz telemetry, and a motor case that comes home for its next flight.</p></li>
+          </ol>
+        </div>
+        <dl class="burn__readout mono" aria-hidden="true">
+          <div><dt>Stage</dt><dd data-ro-stage>MODEL</dd></div>
+          <div><dt>Chamber</dt><dd><span data-ro-pc>00.0</span> bar</dd></div>
+          <div><dt>Thrust</dt><dd><span data-ro-thrust>00.0</span> kN</dd></div>
+          <div><dt>T+</dt><dd><span data-ro-t>00.00</span> s</dd></div>
+        </dl>
+        <p class="burn__hint mono" aria-hidden="true">Move through the field · click to pulse</p>
+      </div>
+    </section>
+
+    <!-- 4 · Specifications -->
+    <section class="specs" id="specs" aria-labelledby="specs-title">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Specifications</p>
+          <h2 id="specs-title">The numbers integrators ask for first.</h2>
+        </header>
+        <div class="specs__body">
+          <div class="specs__main">
+            <div class="tabs" role="tablist" aria-label="Specification groups">
+              <button role="tab" id="tab-prop" aria-controls="panel-prop" aria-selected="true">Propulsion</button>
+              <button role="tab" id="tab-veh" aria-controls="panel-veh" aria-selected="false" tabindex="-1">Vehicle</button>
+              <button role="tab" id="tab-int" aria-controls="panel-int" aria-selected="false" tabindex="-1">Interfaces</button>
+              <button role="tab" id="tab-ops" aria-controls="panel-ops" aria-selected="false" tabindex="-1">Operations</button>
+            </div>
+            <div class="tabpanel" role="tabpanel" id="panel-prop" aria-labelledby="tab-prop" tabindex="0">
+              <table class="spec-table"><tbody>
+                <tr><th scope="row">Motor type</th><td>Hybrid, N₂O / paraffin-HTPB</td></tr>
+                <tr><th scope="row">Average thrust</th><td>24 kN</td></tr>
+                <tr><th scope="row">Peak thrust</th><td>29 kN</td></tr>
+                <tr><th scope="row">Burn time</th><td>18 s nominal</td></tr>
+                <tr><th scope="row">Total impulse</th><td>432 kN·s</td></tr>
+                <tr><th scope="row">Specific impulse</th><td>238 s (vacuum)</td></tr>
+                <tr><th scope="row">Throttle range</th><td>40–100%</td></tr>
+                <tr><th scope="row">In-flight restarts</th><td>Up to 3</td></tr>
+                <tr><th scope="row">Chamber pressure</th><td>32 bar</td></tr>
+              </tbody></table>
+            </div>
+            <div class="tabpanel" role="tabpanel" id="panel-veh" aria-labelledby="tab-veh" tabindex="0" hidden>
+              <table class="spec-table"><tbody>
+                <tr><th scope="row">Length</th><td>3.70 m</td></tr>
+                <tr><th scope="row">Diameter</th><td>300 mm</td></tr>
+                <tr><th scope="row">Wet mass</th><td>410 kg</td></tr>
+                <tr><th scope="row">Dry mass</th><td>168 kg</td></tr>
+                <tr><th scope="row">Max payload</th><td>60 kg</td></tr>
+                <tr><th scope="row">Fins</th><td>4 × clipped delta, swappable</td></tr>
+                <tr><th scope="row">Roll control</th><td>4 canards, ±15°</td></tr>
+              </tbody></table>
+            </div>
+            <div class="tabpanel" role="tabpanel" id="panel-int" aria-labelledby="tab-int" tabindex="0" hidden>
+              <table class="spec-table"><tbody>
+                <tr><th scope="row">Payload</th><td>Ø300 mm, 12 × M6 bolt circle</td></tr>
+                <tr><th scope="row">Power</th><td>28 V DC via umbilical</td></tr>
+                <tr><th scope="row">Data</th><td>Ethernet + RS-422, 1 kHz telemetry</td></tr>
+                <tr><th scope="row">Oxidizer fill</th><td>Dry-break N₂O coupling</td></tr>
+                <tr><th scope="row">Mechanical envelope</th><td>STEP model, on request</td></tr>
+              </tbody></table>
+            </div>
+            <div class="tabpanel" role="tabpanel" id="panel-ops" aria-labelledby="tab-ops" tabindex="0" hidden>
+              <table class="spec-table"><tbody>
+                <tr><th scope="row">Pad turnaround</th><td>54 min</td></tr>
+                <tr><th scope="row">Motor case life</th><td>12 flights</td></tr>
+                <tr><th scope="row">Propellant handling</th><td>Inert fuel grain; N₂O loaded on the pad</td></tr>
+                <tr><th scope="row">Recovery</th><td>Drogue and main parachute</td></tr>
+                <tr><th scope="row">Lead time</th><td>14 weeks</td></tr>
+                <tr><th scope="row">Support</th><td>On-site launch engineer through first flight</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+
+          <aside class="docs" aria-labelledby="docs-title">
+            <h3 class="mono" id="docs-title">Documents</h3>
+            <ul>
+              <li><div><p>Data sheet</p><span class="mono">PDF · 2.1 MB</span></div><button class="btn btn--small" data-doc="datasheet">Request</button></li>
+              <li><div><p>Interface control document</p><span class="mono">Under NDA</span></div><button class="btn btn--small" data-doc="icd">Request</button></li>
+              <li><div><p>STEP envelope model</p><span class="mono">Under NDA</span></div><button class="btn btn--small" data-doc="step">Request</button></li>
+              <li><div><p>Hot-fire report HF-047</p><span class="mono">PDF · 6.8 MB</span></div><button class="btn btn--small" data-doc="report">Request</button></li>
+            </ul>
+            <p class="docs__note">Requests go straight to our engineering team.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · Test log -->
+    <section class="log" id="log" aria-labelledby="log-title">
+      <div class="wrap">
+        <header class="section-head section-head--split" data-reveal>
+          <div>
+            <p class="eyebrow">Test log</p>
+            <h2 id="log-title">Every firing, on the record.</h2>
+          </div>
+          <p>We publish every hot-fire and flight, including the ones that didn't go to plan.</p>
+        </header>
+      </div>
+      <div class="log__controls wrap">
+        <button class="icon-btn" data-log-prev aria-label="Earlier entries">←</button>
+        <button class="icon-btn" data-log-next aria-label="Later entries">→</button>
+      </div>
+      <ol class="log__track" data-log-track>
+        <li class="log__item">
+          <time class="mono" datetime="2024-03">Mar 2024</time><span class="log__code mono">HF-001</span>
+          <h3>First light</h3><p>3.2 s burn to characterize the injector. Shut down on schedule.</p>
+          <span class="chip">Pass</span>
+        </li>
+        <li class="log__item">
+          <time class="mono" datetime="2024-09">Sep 2024</time><span class="log__code mono">HF-019</span>
+          <h3>Full duration</h3><p>18.4 s at full thrust. Chamber pressure within 2% of the model.</p>
+          <span class="chip">Pass</span>
+        </li>
+        <li class="log__item">
+          <time class="mono" datetime="2024-12">Dec 2024</time><span class="log__code mono">HF-031</span>
+          <h3>Nozzle erosion</h3><p>Throat eroded past limits. We moved to silica-phenolic and confirmed the fix on HF-034.</p>
+          <span class="chip chip--warn">Anomaly</span>
+        </li>
+        <li class="log__item">
+          <time class="mono" datetime="2025-02">Feb 2025</time><span class="log__code mono">HF-047</span>
+          <h3>Throttle and relight</h3><p>Swept 100 → 40 → 100% thrust, then relit after a 2 s shutdown.</p>
+          <span class="chip">Pass</span>
+        </li>
+        <li class="log__item">
+          <time class="mono" datetime="2025-07">Jul 2025</time><span class="log__code mono">FL-001</span>
+          <h3>First flight</h3><p>31 km apogee with full telemetry. Motor case recovered intact.</p>
+          <span class="chip">Pass</span>
+        </li>
+        <li class="log__item">
+          <time class="mono" datetime="2026-01">Jan 2026</time><span class="log__code mono">FL-004</span>
+          <h3>Same case, fourth flight</h3><p>Refurbished and flown again nine days after landing.</p>
+          <span class="chip">Pass</span>
+        </li>
+        <li class="log__item log__item--now">
+          <time class="mono" datetime="2026-10">Oct 2026</time><span class="log__code mono">SN-014</span>
+          <h3>Qualification</h3><p>First production unit is in qualification testing. Deliveries open Q2 2027.</p>
+          <span class="chip chip--live">In progress</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 6 · Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+        <div class="contact__intro" data-reveal>
+          <p class="eyebrow">Request specs</p>
+          <h2 id="contact-title">Talk to an engineer.</h2>
+          <p class="contact__lede">Tell us what you're flying. An engineer, not a sales rep, replies within two working days.</p>
+          <ul class="ticks-list mono">
+            <li>Export-controlled data shared under NDA</li>
+            <li>Test-stand visits on request</li>
+            <li>Engineering support through first flight</li>
+          </ul>
+        </div>
+
+        <form class="form" data-form novalidate>
+          <div class="form__fields">
+            <div class="field">
+              <label for="f-name">Name <span class="req">Required</span></label>
+              <input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name" />
+              <p class="field__error" id="e-name"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Work email <span class="req">Required</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email" />
+              <p class="field__error" id="e-email"></p>
+            </div>
+            <div class="field">
+              <label for="f-org">Organization <span class="req">Required</span></label>
+              <input id="f-org" name="organization" autocomplete="organization" required aria-describedby="e-org" />
+              <p class="field__error" id="e-org"></p>
+            </div>
+            <div class="field">
+              <label for="f-program">Program <span class="req">Required</span></label>
+              <select id="f-program" name="program" required aria-describedby="e-program">
+                <option value="">Choose one</option>
+                <option>Suborbital research</option>
+                <option>Hypersonic testing</option>
+                <option>Upper-stage development</option>
+                <option>Something else</option>
+              </select>
+              <p class="field__error" id="e-program"></p>
+            </div>
+            <fieldset class="field field--full">
+              <legend>Documents you need <span class="req req--opt">Optional</span></legend>
+              <div class="chips">
+                <label class="check"><input type="checkbox" name="docs" value="datasheet" /><span>Data sheet</span></label>
+                <label class="check"><input type="checkbox" name="docs" value="icd" /><span>Interface control doc</span></label>
+                <label class="check"><input type="checkbox" name="docs" value="step" /><span>STEP model</span></label>
+                <label class="check"><input type="checkbox" name="docs" value="report" /><span>Hot-fire report</span></label>
+              </div>
+            </fieldset>
+            <div class="field field--full">
+              <label for="f-msg">What are you flying? <span class="req req--opt">Optional</span></label>
+              <textarea id="f-msg" name="message" rows="4" placeholder="Payload mass, target altitude, timeline"></textarea>
+            </div>
+          </div>
+          <button class="btn btn--amber btn--block" type="submit">Send to engineering <span aria-hidden="true">→</span></button>
+          <p class="form__note">We only use your details to reply to this request.</p>
+        </form>
+
+        <div class="form-success" data-success hidden tabindex="-1">
+          <p class="eyebrow"><span class="pip pip--live" aria-hidden="true"></span>Request received</p>
+          <p class="form-success__title">Thanks, <span data-success-name>there</span>.</p>
+          <p>An engineer will reply by <strong data-success-date></strong>. If your program needs export-controlled data, we'll send an NDA first.</p>
+          <button class="btn btn--ghost" data-reset>Send another request</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__cols">
+      <div>
+        <p class="mono footer__h">Hardware</p>
+        <a href="#hardware">Ember K1</a><a href="#specs">Specifications</a><a href="#log">Test log</a>
+      </div>
+      <div>
+        <p class="mono footer__h">Company</p>
+        <a href="#contact">Careers</a><a href="#contact">Press</a><a href="#contact">Visit the test stand</a>
+      </div>
+      <div>
+        <p class="mono footer__h">Contact</p>
+        <a href="mailto:engineering@kiln.example">engineering@kiln.example</a>
+      </div>
+      <p class="footer__legal mono">© 2026 Kiln Propulsion · Concept site: Kiln and Ember are fictional.</p>
+    </div>
+    <div class="wrap">
+      <div class="footer__dock" data-dock>
+        <span class="mono">Ember K1 · SN-014 · At rest</span>
+        <a class="mono" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+    <p class="footer__word" aria-hidden="true">KILN</p>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
